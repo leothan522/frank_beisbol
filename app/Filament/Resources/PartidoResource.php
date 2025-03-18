@@ -48,6 +48,8 @@ class PartidoResource extends Resource
                     ->required()
                     ->columnSpanFull()
                     ->activeUrl(),
+                Forms\Components\Toggle::make('finalizado')
+                    ->hiddenOn('create'),
             ]);
     }
 
@@ -60,12 +62,19 @@ class PartidoResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('hora')
                     ->time('h:i a'),
-                Tables\Columns\TextColumn::make('equipo_local.nombre')
+                Tables\Columns\TextColumn::make('equipo_local.mini')
+                    ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('equipo_visitante.nombre')
+                Tables\Columns\TextColumn::make('equipo_visitante.mini')
+                    ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\IconColumn::make('finalizado')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-clock')
+                    ->falseColor('gray'),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -83,9 +92,6 @@ class PartidoResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('Ver')
-                    ->url('https://www.google.com/')
-                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

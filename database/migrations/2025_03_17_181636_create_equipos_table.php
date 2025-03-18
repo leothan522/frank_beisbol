@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
+            $table->string('mini')->unique();
             $table->text('estadium');
             $table->string('image_logo')->nullable();
             $table->string('image_estadium')->nullable();

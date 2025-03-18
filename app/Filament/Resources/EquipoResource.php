@@ -25,9 +25,14 @@ class EquipoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nombre')
-                    ->label('Nombre del equipo')
+                    ->label('Nombre Completo del equipo')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('mini')
+                    ->label('Nombre Corto del equipo')
+                    ->required()
+                    ->maxLength(12),
                 Forms\Components\TextInput::make('estadium')
                     ->label('Nombre del Estadium')
                     ->required(),
@@ -49,8 +54,11 @@ class EquipoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nombre')
+                    ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('estadium')
+                Tables\Columns\TextColumn::make('mini')
+                    ->label('Abreviatura')
+                    ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image_logo'),
                 Tables\Columns\ImageColumn::make('image_estadium')

@@ -11,6 +11,7 @@ class Equipo extends Model
     protected $table = 'equipos';
     protected $fillable = [
         'nombre',
+        'mini',
         'estadium',
         'image_logo',
         'image_estadium',

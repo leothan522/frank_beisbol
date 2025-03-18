@@ -17,6 +17,7 @@ class Partido extends Model
         'equipo_local_id',
         'equipo_visitante_id',
         'url',
+        'finalizado'
     ];
 
     public function equipo_local(): BelongsTo

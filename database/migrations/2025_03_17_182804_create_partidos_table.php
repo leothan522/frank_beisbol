@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('equipo_local_id');
             $table->unsignedBigInteger('equipo_visitante_id');
             $table->text('url');
+            $table->boolean('finalizado')->default(false);
             $table->foreign('equipo_local_id')->references('id')->on('equipos')->cascadeOnDelete();
             $table->foreign('equipo_visitante_id')->references('id')->on('equipos')->cascadeOnDelete();
             $table->timestamps();
