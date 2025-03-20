@@ -12,9 +12,12 @@ class Equipo extends Model
     protected $fillable = [
         'nombre',
         'mini',
-        'estadium',
+        'estadio',
+        'fundacion',
+        'presidente',
+        'manager',
         'image_logo',
-        'image_estadium',
+        'image_estadio',
         'activo',
     ];
 

@@ -62,33 +62,36 @@ class PartidoResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('fecha')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('hora')
-                    ->time('h:i a'),
+                    ->time('h:i a')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('equipo_local.mini')
                     ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
-                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('equipo_visitante.mini')
                     ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
-                    ->sortable()
                     ->searchable(),
                 Tables\Columns\IconColumn::make('finalizado')
                     ->boolean()
                     ->trueIcon('heroicon-o-check-circle')
                     ->falseIcon('heroicon-o-clock')
-                    ->falseColor('gray'),
+                    ->falseColor('gray')
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('title')
+                    ->label('Titulo')
                     ->searchable()
+                    ->limit(30)
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
+                /*Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),*/
             ])
             ->filters([
                 //

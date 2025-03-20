@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->string('mini')->unique();
-            $table->text('estadium');
+            $table->text('estadio');
+            $table->date('fundacion')->nullable();
+            $table->string('presidente')->nullable();
+            $table->string('manager')->nullable();
             $table->string('image_logo')->nullable();
-            $table->string('image_estadium')->nullable();
+            $table->string('image_estadio')->nullable();
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });

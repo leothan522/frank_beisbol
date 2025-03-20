@@ -25,24 +25,30 @@ class EquipoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nombre')
-                    ->label('Nombre Completo del equipo')
+                    ->label('Nombre Oficial')
                     ->unique(ignoreRecord: true)
                     ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('mini')
-                    ->label('Nombre Corto del equipo')
+                    ->label('Nombre Corto')
                     ->unique(ignoreRecord: true)
                     ->required()
                     ->maxLength(12),
-                Forms\Components\TextInput::make('estadium')
-                    ->label('Nombre del Estadium')
+                Forms\Components\TextInput::make('estadio')
+                    ->label('Sede (Estadio)')
                     ->required(),
+                Forms\Components\DatePicker::make('fundacion')
+                    ->label('Fundación'),
+                Forms\Components\TextInput::make('presidente')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('manager')
+                    ->maxLength(255),
                 Forms\Components\FileUpload::make('image_logo')
                     ->label('Logo del equipo')
-                    ->image(),
-                Forms\Components\FileUpload::make('image_estadium')
-                    ->label('Imagen del Estadium')
+                    ->image()
+                    ->required(),
+                Forms\Components\FileUpload::make('image_estadio')
+                    ->label('Imagen del Estadio')
                     ->image()
                     ->imageEditor(),
                 Forms\Components\Toggle::make('activo')
@@ -56,25 +62,32 @@ class EquipoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nombre')
+                    ->label('Nombre Oficial')
                     ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('mini')
-                    ->label('Abreviatura')
+                    ->label('Nombre Corto')
                     ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image_logo'),
-                Tables\Columns\ImageColumn::make('image_estadium')
+                Tables\Columns\ImageColumn::make('image_logo')
+                    ->label('Imagen Logo')
+                    ->alignCenter(),
+                Tables\Columns\TextColumn::make('fundacion')
+                    ->label('Funcación')
+                    ->date('d/m/Y')
+                    ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\IconColumn::make('activo')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('created_at')
+                    ->boolean()
+                    ->alignCenter(),
+                /*Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),*/
             ])
             ->filters([
                 //
