@@ -46,11 +46,15 @@ class EquipoResource extends Resource
                 Forms\Components\FileUpload::make('image_logo')
                     ->label('Logo del equipo')
                     ->image()
-                    ->required(),
+                    ->imageEditor()
+                    ->maxSize(2048)
+                    ->directory('equipos-logos'),
                 Forms\Components\FileUpload::make('image_estadio')
                     ->label('Imagen del Estadio')
                     ->image()
-                    ->imageEditor(),
+                    ->imageEditor()
+                    ->maxSize(2048)
+                    ->directory('equipos-estadios'),
                 Forms\Components\Toggle::make('activo')
                     ->required()
                     ->hiddenOn('create'),

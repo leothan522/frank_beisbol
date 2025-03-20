@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	
+
 
 	var siteMenuClone = function() {
 
@@ -19,11 +19,11 @@ jQuery(document).ready(function($) {
 
 
 		setTimeout(function() {
-			
+
 			var counter = 0;
       $('.site-mobile-menu .has-children').each(function(){
         var $this = $(this);
-        
+
         $this.prepend('<span class="arrow-collapse collapsed">');
 
         $this.find('.arrow-collapse').attr({
@@ -49,8 +49,8 @@ jQuery(document).ready(function($) {
       } else {
         $this.addClass('active');
       }
-      e.preventDefault();  
-      
+      e.preventDefault();
+
     });
 
 		$(window).resize(function() {
@@ -75,7 +75,7 @@ jQuery(document).ready(function($) {
 				$('body').addClass('offcanvas-menu');
 				$this.addClass('active');
 			}
-		}) 
+		})
 
 		// click outisde offcanvas
 		$(document).mouseup(function(e) {
@@ -86,7 +86,7 @@ jQuery(document).ready(function($) {
 				}
 	    }
 		});
-	}; 
+	};
 	siteMenuClone();
 
 
@@ -213,19 +213,19 @@ jQuery(document).ready(function($) {
 	};
 	siteStellar();
 
-	var siteCountDown = function() {
+	/*var siteCountDown = function() {
 
-		$('#date-countdown').countdown('2025/03/20', function(event) {
+		$('#date-countdown').countdown('2025/03/22', function(event) {
 		  var $this = $(this).html(event.strftime(''
-		    /*+ '<span class="countdown-block"><span class="label">%w</span> weeks </span>'*/
+		    /!*+ '<span class="countdown-block"><span class="label">%w</span> weeks </span>'*!/
 		    + '<span class="countdown-block"><span class="label">%d</span> días </span>'
 		    + '<span class="countdown-block"><span class="label">%H</span> hr </span>'
 		    + '<span class="countdown-block"><span class="label">%M</span> min </span>'
 		    + '<span class="countdown-block"><span class="label">%S</span> sec</span>'));
 		});
-				
-	};
-	siteCountDown();
+
+	};*/
+	//siteCountDown();
 
 	$(document).ready(function () {
 		$('#popover_beisbol').popover();

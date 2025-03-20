@@ -157,6 +157,8 @@
 
 <script src="{{ asset('vendor/sport/js/main.js') }}"></script>
 
+@yield('js')
+
 @livewireScripts
 </body>
 </html>
