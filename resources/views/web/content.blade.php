@@ -10,11 +10,11 @@
         <div class="ml-auto pr-4 order-md-2">
             <div class="h5 text-black text-uppercase text-center text-lg-left">
                 <div class="d-block d-md-inline-block mb-3 mb-lg-0">
-                    <img src="{{ asset('vendor/sport/images/img_1_sq.jpg') }}" alt="Image" class="mr-3 image"><span class="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">magallanes</span>
+                    <img src="{{ verImagen($lastPartido->equipo_local->image_logo) }}" alt="Image" class="mr-3 image"><span class="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">{{ $lastPartido->equipo_local->mini }}</span>
                 </div>
                 <span class="text-muted mx-3 text-normal mb-3 mb-lg-0 d-block d-md-inline ">vs</span>
                 <div class="d-block d-md-inline-block">
-                    <img src="{{ asset('vendor/sport/images/img_3_sq.jpg') }}" alt="Image" class="mr-3 image"><span class="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">leones</span>
+                    <img src="{{ verImagen($lastPartido->equipo_visitante->image_logo) }}" alt="Image" class="mr-3 image"><span class="d-block d-md-inline-block ml-0 ml-md-3 ml-lg-0">{{ $lastPartido->equipo_visitante->mini }}</span>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
     </div>
 
-    <a href="https://www.youtube.com/watch?v=f1jWJHFgYGk" class="play-button popup-vimeo">
+    <a href="{{ $lastPartido->url }}" class="play-button popup-vimeo">
         <div class="bg-image overlay-success rounded mb-5" style="background-image: url('{{ asset('img/sport/beisbol_2.jpg') }}');" data-stellar-background-ratio="0.5">
 
 
@@ -32,10 +32,10 @@
                     <div class="text-center text-lg-left">
                         <div class="d-block d-lg-flex align-items-center">
                             <div class="image mx-auto mb-3 mb-lg-0 mr-lg-3">
-                                <img src="{{ asset('vendor/sport/images/img_1_sq.jpg') }}" alt="Image" class="img-fluid">
+                                <img src="{{ verImagen($lastPartido->equipo_local->image_logo) }}" alt="Image" class="img-fluid">
                             </div>
                             <div class="text">
-                                <h3 class="h5 mb-0 text-black text-uppercase">Magallanes</h3>
+                                <h3 class="h5 mb-0 text-black text-uppercase">{{ $lastPartido->equipo_local->nombre }}</h3>
                                 <span class="text-uppercase small country text-black">Local</span>
                             </div>
                         </div>
@@ -44,10 +44,10 @@
                 </div>
                 <div class="col-md-12 col-lg-4 text-center mb-4 mb-lg-0">
                     <div class="d-inline-block">
-                        <p class="mb-2"><small class="text-uppercase text-black font-weight-bold">Liga Venezolana de Béisbol Profesional</small></p>
+                        <p class="mb-2"><small class="text-uppercase text-black font-weight-bold">{{ $lastPartido->title }}</small></p>
                         <div class="bg-black py-2 px-4 mb-2 text-white d-inline-block rounded"><span class="h3">VS</span></div>
-                        <p class="mb-0"><small class="text-uppercase text-black font-weight-bold">10 de septiembre / 7:30 pm</small></p>
-                        <p class="mb-0"><small class="text-uppercase text-black font-weight-bold">Estadio: José Bernardo Pérez</small></p>
+                        <p class="mb-0"><small class="text-uppercase text-black font-weight-bold">{{ fechaEnLetras($lastPartido->fecha) }} / {{ getFecha($lastPartido->hora, 'h:i a') }}</small></p>
+                        <p class="mb-0"><small class="text-uppercase text-black font-weight-bold">{{ $lastPartido->equipo_local->estadio }}</small></p>
                     </div>
                 </div>
 
@@ -55,10 +55,10 @@
                     <div class="">
                         <div class="d-block d-lg-flex align-items-center">
                             <div class="image mx-auto ml-lg-3 mb-3 mb-lg-0 order-2">
-                                <img src="{{ asset('vendor/sport/images/img_4_sq.jpg') }}" alt="Image" class="img-fluid">
+                                <img src="{{ verImagen($lastPartido->equipo_visitante->image_logo) }}" alt="Image" class="img-fluid">
                             </div>
                             <div class="text order-1">
-                                <h3 class="h5 mb-0 text-black text-uppercase">Leones</h3>
+                                <h3 class="h5 mb-0 text-black text-uppercase">{{ $lastPartido->equipo_visitante->nombre }}</h3>
                                 <span class="text-uppercase small country text-black">Visitante</span>
                             </div>
                         </div>
@@ -89,9 +89,10 @@
 
                     <div class="row align-items-center">
                         <div class="col-md-12">
-
-
+                            
                             <a href="https://www.youtube.com/watch?v=f1jWJHFgYGk" class="play-button popup-vimeo">
+
+
                                 <div class="row bg-white align-items-center ml-0 mr-0 py-4 match-entry">
                                     <div class="col-4 col-lg-4 mb-4 mb-lg-0">
 
@@ -130,6 +131,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
                             </a>
 
                             <!-- END row -->

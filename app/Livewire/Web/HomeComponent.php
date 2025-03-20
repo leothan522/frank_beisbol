@@ -18,7 +18,7 @@ class HomeComponent extends Component
 
     protected function lastPartido(): void
     {
-        $last = Partido::where('fecha', '>=', now())->orderBy('fecha', 'DESC')->first();
+        $last = Partido::where('fecha', '>=', now())->orderBy('fecha', 'ASC')->first();
         if ($last){
             $this->lastPartido = $last;
         }
