@@ -30,6 +30,7 @@ class PartidoResource extends Resource
                     ->maxLength(255)
                     ->columnSpanFull(),
                 Forms\Components\DatePicker::make('fecha')
+                    ->afterOrEqual(today())
                     ->required(),
                 Forms\Components\TimePicker::make('hora')
                     ->required()
@@ -38,12 +39,14 @@ class PartidoResource extends Resource
                     ->relationship('equipo_local', 'nombre')
                     ->required()
                     ->searchable()
-                    ->preload(),
+                    ->preload()
+                    ->different('equipo_visitante_id'),
                 Forms\Components\Select::make('equipo_visitante_id')
                     ->relationship('equipo_visitante', 'nombre')
                     ->required()
                     ->searchable()
-                    ->preload(),
+                    ->preload()
+                    ->different('equipo_local_id'),
                 Forms\Components\TextInput::make('url')
                     ->required()
                     ->columnSpanFull()

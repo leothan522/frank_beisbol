@@ -26,11 +26,13 @@ class EquipoResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('nombre')
                     ->label('Nombre Completo del equipo')
+                    ->unique(ignoreRecord: true)
                     ->required()
                     ->maxLength(255)
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('mini')
                     ->label('Nombre Corto del equipo')
+                    ->unique(ignoreRecord: true)
                     ->required()
                     ->maxLength(12),
                 Forms\Components\TextInput::make('estadium')
