@@ -62,11 +62,9 @@ class PartidoResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('fecha')
                     ->date()
-                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('hora')
-                    ->time('h:i a')
-                    ->sortable(),
+                    ->time('h:i a'),
                 Tables\Columns\TextColumn::make('equipo_local.mini')
                     ->formatStateUsing(fn (string $state) => mb_strtoupper($state))
                     ->searchable(),
@@ -93,6 +91,7 @@ class PartidoResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),*/
             ])
+            ->defaultSort('fecha', 'desc')
             ->filters([
                 //
             ])
