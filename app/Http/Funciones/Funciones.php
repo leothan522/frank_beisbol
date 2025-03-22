@@ -27,7 +27,6 @@ function verImagen($path, $root = 'storage'): string
     return asset('img/web_img_placeholder.jpg');
 }
 
-
 function haceCuanto($fecha): string
 {
     return Carbon::parse($fecha)->diffForHumans();

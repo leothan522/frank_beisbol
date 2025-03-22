@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>{{ env('APP_NAME', 'Beisbol') }}</title>
+    <title>¡Partidos en vivo! | {{ env('APP_NAME', 'Laravel') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -79,12 +79,12 @@
             </div>
         </div>
         <div class="site-mobile-menu-body">
-
+        {{--JS--}}
         </div>
     </div>
 
     <header class="site-navbar absolute transparent" role="banner">
-        <div class="py-3">
+        <div class="py-3 d-none">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-6 col-md-3">
@@ -102,7 +102,7 @@
         </div>
         <nav class="site-navigation position-relative text-right bg-black text-md-right" role="navigation">
             <div class="container position-relative">
-                <div class="site-logo">
+                <div class="site-logo pt-4">
                     <a href="#"><img src="{{ asset('img/sport/logo_plantilla.png') }}" alt="" width="128" height="113"></a>
                 </div>
 
@@ -111,7 +111,7 @@
                 <ul class="site-menu js-clone-nav d-none d-md-block">
                     <li><a href="#">Sobre Nosotros</a></li>
                     <li><a href="#">Contactanos</a></li>
-                    <li><a href="{{ url('/dashboard') }}"><span class="icon-sign-in"></span> Dashboard</a></li>
+                    <li><a href="{{ url('/dashboard') }}" target="_blank"><span class="icon-sign-in"></span> Dashboard</a></li>
                 </ul>
             </div>
         </nav>
@@ -119,7 +119,7 @@
 
     <div class="banner">
 
-        <div class="card" style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 0, 0, 0.1); width: 65%">
+        <div class="card col-md-8" style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 0, 0, 0.1);">
             <div class="card-body">
                 <h1 class="card-title fw-bold">¡Partidos en vivo!</h1>
                 <p class="card-text fw-bold h5">Vive la experiencia como si estuvieses en el estadio.</p>
@@ -138,7 +138,7 @@
 
     <footer class="site-footer border-top">
         <p class="text-center">
-            Copyright &copy; {{ date('Y') }} | {{ env('APP_NAME', 'Laravel') }}
+            &copy; {{ date('Y') }} | {{ env('APP_NAME', 'Laravel') }}
         </p>
 
     </footer>
@@ -157,8 +157,11 @@
 
 <script src="{{ asset('vendor/sport/js/main.js') }}"></script>
 
-@yield('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @livewireScripts
+
+@yield('js')
+
 </body>
 </html>

@@ -1,8 +1,8 @@
 @section('js')
     <script type="text/javascript">
-        var siteCountDown = function() {
+        let siteCountDown = function () {
 
-            $('#date-countdown').countdown('{{ $lastPartido ? $lastPartido->fecha : now() }}', function(event) {
+            $('#date-countdown').countdown('{{ $cuentaRegresiva }}', function (event) {
                 var $this = $(this).html(event.strftime(''
                     /*+ '<span class="countdown-block"><span class="label">%w</span> semanas </span>'*/
                     + '<span class="countdown-block"><span class="label">%D</span> días </span>'
@@ -13,5 +13,15 @@
 
         };
         siteCountDown();
+
+        Livewire.on('initVideo', ({ id }) => {
+            $('#link_video_' + id).click();
+        });
+
+        Livewire.on('launchModal', ({ url }) =>{
+            $("#iframe_video").attr("src", 'https://www.youtube.com/embed/' + url);
+            $('#launch_modal').click();
+        });
+
     </script>
 @endsection
